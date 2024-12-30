@@ -139,6 +139,19 @@ for i, scenario in enumerate(scenarios):
     results.append(result)
     print(f"Scénario {i+1} terminé. Résultats : {result}\n")
 
+# Plot évolution des fitness par génération
+for i, result in enumerate(results):
+    fitness_per_iteration = result['fitness_per_iteration']
+    avg_fitness_per_gen = [sum(f) / len(f) for f in fitness_per_iteration]
+   
+    plt.figure()
+    plt.plot(avg_fitness_per_gen, label="Fitness moyenne", color="blue")
+    plt.title(f"Évolution des fitness - Scénario {i+1}")
+    plt.xlabel("Générations")
+    plt.ylabel("Valeur de fitness")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
 
 
 # Plot graphs
